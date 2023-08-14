@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/pokemon", (req, res) => {
-  res.render("Pokemon");
+  res.render("Index");
 });
 
 app.listen(PORT, () => {

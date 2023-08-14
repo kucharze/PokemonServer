@@ -18,7 +18,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the Pokemon app!!");
+  res.send(
+    "<h1>Welcome to the Pokemon app!!</h1><a href='/pokemon'>Go to list</a>"
+  );
 });
 
 app.get("/pokemon", (req, res) => {

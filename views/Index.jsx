@@ -3,7 +3,9 @@ import React from 'react'
 function Index(props) {
     const myStyle = {
         color: '#ffffff',
-        backgroundColor: '#000000',
+        backgroundColor: '#00A0A0',
+        display: 'flex',
+        flexDirection: 'column'
     };
 
     const cap = (name) =>{
@@ -16,8 +18,8 @@ function Index(props) {
     <div style={myStyle}>
       <h1>See all the pokemon</h1>
       {
-        props.pokemon.map((item)=>{
-            return <h1>{cap(item.name)}</h1>
+        props.pokemon.map((item,i)=>{
+            return <a href={`/pokemon/${i}`} key={i}>{cap(item.name)}</a>
         })
       }
     </div>

@@ -8,6 +8,11 @@ function Index(props) {
         flexDirection: 'column'
     };
 
+    const aStyle = {
+        fontSize: '20px',
+        margin: '10px'
+    };
+
     const cap = (name) =>{
         //https://www.freecodecamp.org/news/javascript-capitalize-first-letter-of-word/
         let letter = name.charAt(0).toUpperCase()
@@ -19,7 +24,7 @@ function Index(props) {
       <h1>See all the pokemon</h1>
       {
         props.pokemon.map((item,i)=>{
-            return <a href={`/pokemon/${i}`} key={i}>{cap(item.name)}</a>
+            return <a style={aStyle} href={`/pokemon/${i}`} key={i}>{cap(item.name)}</a>
         })
       }
     </div>

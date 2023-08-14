@@ -7,14 +7,23 @@ function Show(props) {
         let rem = name.slice(1)
         return letter+rem
     }
+    
+    const aStyle = {
+        fontSize: '20px',
+        margin: '10px'
+    };
+
+    const imgStyle = {
+        height: '500px'
+    };
 
   return (
     <div>
       <h1>Gotta catchem all</h1>
       <h1>{cap(props.pokemon.name)}</h1>
-      <img src={props.pokemon.img+'.jpg'} alt="" />
+      <img style={imgStyle} src={props.pokemon.img+'.jpg'} alt="" />
       <br/>
-      <a href="/pokemon">Back </a>
+      <a style={aStyle} href="/pokemon">Back </a>
     </div>
   )
 }

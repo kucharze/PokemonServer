@@ -1,5 +1,5 @@
 const express = require("express");
-
+const axios = require("axios");
 const pokemon = require("./models/pokemon");
 const app = express();
 
@@ -17,19 +17,32 @@ app.use(express.urlencoded({ extended: false }));
 //Allows for use of res.json
 app.use(express.json());
 
+const pokeList = [];
+
+const getPokemon = async () => {
+  const dat = await axios.get("https://pokeapi.co/api/v2/pokemon/2");
+  console.log(dat.data);
+  return await dat.data;
+};
+
 app.get("/", (req, res) => {
   res.send(
     "<h1>Welcome to the Pokemon app!!</h1><a href='/pokemon'>Go to list</a>"
   );
 });
 
-app.get("/pokemon", (req, res) => {
-  res.render("Index", { pokemon: pokemon });
+app.get("/pokemon", async (req, res) => {
+  const dat = await axios.get("https://pokeapi.co/api/v2/pokemon");
+  getPokemon();
+  let items = await dat.data;
+  //   console.log(items);
+  res.render("Index", { pokemon: items.results });
+  //   res.send(items);
 });
 
 app.get("/pokemon/:id", (req, res) => {
   let pok = pokemon[req.params.id];
-  res.render("Show", { pokemon: pok });
+  res.render("Show", { pokemon: pok, id: req.params.id });
   //   res.send(req.params.id);
 });
 

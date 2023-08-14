@@ -36,7 +36,7 @@ app.get("/pokemon", async (req, res) => {
   getPokemon();
   let items = await dat.data;
   //   console.log(items);
-  res.render("Index", { pokemon: items.results });
+  res.render("Index", { pokemon: pokemon });
   //   res.send(items);
 });
 

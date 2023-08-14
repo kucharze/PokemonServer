@@ -25,6 +25,12 @@ app.get("/pokemon", (req, res) => {
   res.render("Index", { pokemon: pokemon });
 });
 
+app.get("/pokemon/:id", (req, res) => {
+  //   let pok = pokemon[req.params.id];
+  //   res.render("Show", { pokemon: pok });
+  res.send(req.params.id);
+});
+
 app.listen(PORT, () => {
   console.log("Server running on port 3000");
 });

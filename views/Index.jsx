@@ -24,7 +24,7 @@ function Index(props) {
       <h1>See all the pokemon</h1>
       {
         props.pokemon.map((item,i)=>{
-            return <a style={aStyle} href={`/pokemon/${i}`} key={i}>{cap(item.name)}</a>
+            return <a style={aStyle} href={`/pokemon/${i+1}`} key={i}>{cap(item.name)}</a>
         })
       }
     </div>

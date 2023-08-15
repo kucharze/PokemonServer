@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
 app.get("/pokemon", async (req, res) => {
   const dat = await axios.get("https://pokeapi.co/api/v2/pokemon");
   let items = await dat.data;
+  console.log(items);
   res.render("Index", { pokemon: items.results });
 });
 

@@ -1,20 +1,7 @@
 import React,{useEffect, useState} from 'react'
+import pokemon from '../models/pokemon';
 
 function Show(props) {
-    const [url,setUrl] = useState(`https://pokeapi.co/api/v2/pokemon/${props.id}`)
-    const [pok,setPok] = useState(null)
-    
-    const getPokemon = async () => {
-        const dat = await axios.get(url);
-        //   console.log(dat.data);
-        let items =  await dat.data;
-        console.log(items)
-        setPok(items)
-    };
-
-    useEffect(()=>{
-        getPokemon()
-    },[])
 
     const cap = (name) =>{
         //https://www.freecodecamp.org/news/javascript-capitalize-first-letter-of-word/
@@ -42,11 +29,13 @@ function Show(props) {
 
   return (
     <div style={myStyle}>
-      <h1>Gotta catchem all</h1>
-      <h1>{cap(props.pokemon.name)}</h1>
-      <img style={imgStyle} src={props.pokemon.img+'.jpg'} alt="" />
-      <br/>
-      <a style={aStyle} href="/pokemon">Back </a>
+        <div>
+            <h1>Gotta catchem all</h1>
+                <h1>{cap(props.pokemon.name)}</h1>
+                <img style={imgStyle} src={props.pokemon.sprites.front_default} alt="" />
+                <br/>
+                <a style={aStyle} href="/pokemon">Back </a>
+        </div> 
     </div>
   )
 }

@@ -19,12 +19,6 @@ app.use(express.json());
 
 const pokeList = [];
 
-const getPokemon = async () => {
-  const dat = await axios.get("https://pokeapi.co/api/v2/pokemon/2");
-  console.log(dat.data);
-  return await dat.data;
-};
-
 app.get("/", (req, res) => {
   res.send(
     "<h1>Welcome to the Pokemon app!!</h1><a href='/pokemon'>Go to list</a>"
@@ -33,17 +27,24 @@ app.get("/", (req, res) => {
 
 app.get("/pokemon", async (req, res) => {
   const dat = await axios.get("https://pokeapi.co/api/v2/pokemon");
-  getPokemon();
   let items = await dat.data;
-  //   console.log(items);
   res.render("Index", { pokemon: items.results });
-  //   res.send(items);
 });
 
-app.get("/pokemon/:id", (req, res) => {
-  let pok = pokemon[req.params.id];
-  res.render("Show", { pokemon: pok, id: req.params.id });
-  //   res.send(req.params.id);
+app.get("/pokemon/:id", async (req, res) => {
+  //   let pok = pokemon[req.params.id];
+
+  try {
+    const dat = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${req.params.id}`
+    );
+    let poke = await dat.data;
+    console.log(poke);
+    res.render("Show", { pokemon: poke, id: req.params.id });
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
 });
 
 app.listen(PORT, () => {

@@ -106,6 +106,49 @@ app.get("/pokemon/:id", async (req, res) => {
   }
 });
 
+app.put("/pokemon/:id", async (req, res) => {
+  let poke = pokemon[req.params.id];
+
+  try {
+    // const dat = await axios.get(
+    //   `https://pokeapi.co/api/v2/pokemon/${req.params.id}`
+    // );
+    // let poke = await dat.data;
+    // console.log(poke);
+
+    await PokeData.findByIdAndUpdate(req.params.id, {
+      name: req.body.pokemon,
+      img: `http://img.pokemondb.net/artwork/${req.body.pokemon}`,
+    }).then(() => {
+      res.redirect("/pokemon");
+    });
+    //console.log(pokemon);
+    // res.render("Change", { pokemon: pok, id: req.params.id });
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+});
+
+app.get("/pokemon/:id/edit", async (req, res) => {
+  let poke = pokemon[req.params.id];
+
+  try {
+    // const dat = await axios.get(
+    //   `https://pokeapi.co/api/v2/pokemon/${req.params.id}`
+    // );
+    // let poke = await dat.data;
+    // console.log(poke);
+
+    const pok = await PokeData.findById(req.params.id);
+    //console.log(pokemon);
+    res.render("Change", { pokemon: pok, id: req.params.id });
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+});
+
 app.listen(PORT, () => {
   console.log("Server running on port 3000");
 });

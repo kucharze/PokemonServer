@@ -46,6 +46,14 @@ app.get("/", (req, res) => {
   );
 });
 
+app.get("/pokemon/seed", async (req, res) => {
+  //deletteing all current data
+  PokeData.deleteMany({});
+
+  PokeData.create(pokemon);
+  res.redirect("/pokemon");
+});
+
 app.get("/pokemon", async (req, res) => {
   // const dat = await axios.get("https://pokeapi.co/api/v2/pokemon");
   // let items = await dat.data;

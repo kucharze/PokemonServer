@@ -7,6 +7,12 @@ function Index(props) {
         display: 'flex',
         flexDirection: 'column'
     };
+    const boxStyle = {
+        color: '#f00000',
+        backgroundColor: '#00A0A0',
+        display: 'flex',
+        flexDirection: 'column'
+    };
 
     const aStyle = {
         fontSize: '30px',
@@ -24,7 +30,9 @@ function Index(props) {
       <h1>See all the pokemon</h1>
       {
         props.pokemon.map((item,i)=>{
-            return <a style={aStyle} href={`/pokemon/${i}`} key={i}>{cap(item.name)}</a>
+            return <div style={boxStyle} key={i}>
+              <a style={aStyle} href={`/pokemon/${i}`} >{cap(item.name)}</a>
+              </div>
         })
       }
     </div>

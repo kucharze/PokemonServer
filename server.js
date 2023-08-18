@@ -26,21 +26,21 @@ app.get("/", (req, res) => {
 });
 
 app.get("/pokemon", async (req, res) => {
-  const dat = await axios.get("https://pokeapi.co/api/v2/pokemon");
-  let items = await dat.data;
-  console.log(items);
-  res.render("Index", { pokemon: items.results });
+  // const dat = await axios.get("https://pokeapi.co/api/v2/pokemon");
+  // let items = await dat.data;
+  // console.log(items);
+  res.render("Index", { pokemon: pokemon });
 });
 
 app.get("/pokemon/:id", async (req, res) => {
-  //   let pok = pokemon[req.params.id];
+  let poke = pokemon[req.params.id];
 
   try {
-    const dat = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/${req.params.id}`
-    );
-    let poke = await dat.data;
-    console.log(poke);
+    // const dat = await axios.get(
+    //   `https://pokeapi.co/api/v2/pokemon/${req.params.id}`
+    // );
+    // let poke = await dat.data;
+    // console.log(poke);
     res.render("Show", { pokemon: poke, id: req.params.id });
   } catch (err) {
     console.log(err);

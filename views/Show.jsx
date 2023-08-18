@@ -26,13 +26,13 @@ function Show(props) {
     const imgStyle = {
         height: '500px'
     };
-
+//props.pokemon.sprites.front_default
   return (
     <div style={myStyle}>
         <div>
             <h1>Gotta catchem all</h1>
                 <h1>{cap(props.pokemon.name)}</h1>
-                <img style={imgStyle} src={props.pokemon.sprites.front_default} alt="" />
+                <img style={imgStyle} src={props.pokemon.img+".jpg"} alt="" />
                 <br/>
                 <a style={aStyle} href="/pokemon">Back </a>
         </div> 

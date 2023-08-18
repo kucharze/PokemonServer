@@ -48,9 +48,9 @@ app.get("/", (req, res) => {
 
 app.get("/pokemon/seed", async (req, res) => {
   //deletteing all current data
-  PokeData.deleteMany({});
+  await PokeData.deleteMany({});
 
-  PokeData.create(pokemon);
+  await PokeData.create(pokemon);
   res.redirect("/pokemon");
 });
 

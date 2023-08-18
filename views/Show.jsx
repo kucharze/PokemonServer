@@ -34,6 +34,11 @@ function Show(props) {
                 <h1>{cap(props.pokemon.name)}</h1>
                 <img style={imgStyle} src={props.pokemon.img+".jpg"} alt="" />
                 <br/>
+                <form action={`/pokemon/${props.pokemon._id}?_method=DELETE`} 
+                    method="POST">
+                        <input type="submit" value="DELETE THIS POKEMON"/>
+                    </form>
+                    <br/>
                 <a style={aStyle} href="/pokemon">Back </a>
         </div> 
     </div>

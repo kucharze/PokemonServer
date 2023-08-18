@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const pokemon = require("./models/pokemon");
+const PokeData = require("./models/pokedata");
 const app = express();
 
 const PORT = 3000;
@@ -49,7 +50,10 @@ app.get("/pokemon", async (req, res) => {
   // const dat = await axios.get("https://pokeapi.co/api/v2/pokemon");
   // let items = await dat.data;
   // console.log(items);
-  res.render("Index", { pokemon: pokemon });
+
+  PokeData.find({}).then((data) => {
+    res.render("Index", { pokemon: data });
+  });
 });
 
 app.get("/pokemon/:id", async (req, res) => {

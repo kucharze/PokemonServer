@@ -90,7 +90,10 @@ app.get("/pokemon/:id", async (req, res) => {
     // );
     // let poke = await dat.data;
     // console.log(poke);
-    res.render("Show", { pokemon: poke, id: req.params.id });
+
+    const pok = await PokeData.findById(req.params.id);
+    console.log(pokemon);
+    res.render("Show", { pokemon: pok, id: req.params.id });
   } catch (err) {
     console.log(err);
     res.send(err);

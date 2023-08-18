@@ -24,7 +24,8 @@ function Show(props) {
     };
 
     const imgStyle = {
-        height: '500px'
+        height: '500px',
+        margin: '10px'
     };
 //props.pokemon.sprites.front_default
   return (
@@ -34,6 +35,7 @@ function Show(props) {
                 <h1>{cap(props.pokemon.name)}</h1>
                 <img style={imgStyle} src={props.pokemon.img+".jpg"} alt="" />
                 <br/>
+                <a style={aStyle} href={`/pokemon/${props.pokemon._id}/edit`}>Change this pokemon</a>
                 <form action={`/pokemon/${props.pokemon._id}?_method=DELETE`} 
                     method="POST">
                         <input type="submit" value="DELETE THIS POKEMON"/>

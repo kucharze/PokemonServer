@@ -5,6 +5,6 @@ const pokemonSchema = new mongoose.Schema({
   img: { type: String, required: true },
 });
 
-const Pokemon = mongoose.model("Poekmon", pokemonSchema);
+const Pokemon = mongoose.model("Pokemon", pokemonSchema);
 
 module.exports = Pokemon;

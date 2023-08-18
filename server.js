@@ -54,6 +54,10 @@ app.get("/pokemon/seed", async (req, res) => {
   res.redirect("/pokemon");
 });
 
+app.get("/pokemon/new", (req, res) => {
+  res.render("New");
+});
+
 app.get("/pokemon", async (req, res) => {
   // const dat = await axios.get("https://pokeapi.co/api/v2/pokemon");
   // let items = await dat.data;
@@ -62,6 +66,19 @@ app.get("/pokemon", async (req, res) => {
   PokeData.find({}).then((data) => {
     res.render("Index", { pokemon: data });
   });
+});
+
+app.post("/pokemon", async (req, res) => {
+  // const dat = await axios.get("https://pokeapi.co/api/v2/pokemon");
+  // let items = await dat.data;
+  console.log(req.body.pokemon);
+
+  PokeData.create({
+    name: req.body.pokemon,
+    img: `http://img.pokemondb.net/artwork/${req.body.pokemon}`,
+  });
+
+  res.redirect("/pokemon");
 });
 
 app.get("/pokemon/:id", async (req, res) => {

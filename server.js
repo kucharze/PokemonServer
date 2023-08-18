@@ -81,6 +81,12 @@ app.post("/pokemon", async (req, res) => {
   res.redirect("/pokemon");
 });
 
+app.delete("/pokemon/:id", (req, res) => {
+  PokeData.findByIdAndRemove(req.params.id).then(() => {
+    res.redirect("/pokemon");
+  });
+});
+
 app.get("/pokemon/:id", async (req, res) => {
   let poke = pokemon[req.params.id];
 
@@ -92,7 +98,7 @@ app.get("/pokemon/:id", async (req, res) => {
     // console.log(poke);
 
     const pok = await PokeData.findById(req.params.id);
-    console.log(pokemon);
+    //console.log(pokemon);
     res.render("Show", { pokemon: pok, id: req.params.id });
   } catch (err) {
     console.log(err);

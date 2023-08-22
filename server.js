@@ -63,7 +63,7 @@ app.get("/pokemon", async (req, res) => {
   // let items = await dat.data;
   // console.log(items);
 
-  PokeData.find({}).then((data) => {
+  await PokeData.find({}).then((data) => {
     res.render("Index", { pokemon: data });
   });
 });
@@ -73,7 +73,7 @@ app.post("/pokemon", async (req, res) => {
   // let items = await dat.data;
   console.log(req.body.pokemon);
 
-  PokeData.create({
+  await PokeData.create({
     name: req.body.pokemon,
     img: `http://img.pokemondb.net/artwork/${req.body.pokemon.toLowerCase()}`,
   });
@@ -81,8 +81,8 @@ app.post("/pokemon", async (req, res) => {
   res.redirect("/pokemon");
 });
 
-app.delete("/pokemon/:id", (req, res) => {
-  PokeData.findByIdAndRemove(req.params.id).then(() => {
+app.delete("/pokemon/:id", async (req, res) => {
+  await PokeData.findByIdAndRemove(req.params.id).then(() => {
     res.redirect("/pokemon");
   });
 });

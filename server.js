@@ -75,7 +75,7 @@ app.post("/pokemon", async (req, res) => {
 
   PokeData.create({
     name: req.body.pokemon,
-    img: `http://img.pokemondb.net/artwork/${req.body.pokemon}`,
+    img: `http://img.pokemondb.net/artwork/${req.body.pokemon.toLowerCase()}`,
   });
 
   res.redirect("/pokemon");
@@ -88,7 +88,7 @@ app.delete("/pokemon/:id", (req, res) => {
 });
 
 app.get("/pokemon/:id", async (req, res) => {
-  let poke = pokemon[req.params.id];
+  // let poke = pokemon[req.params.id];
 
   try {
     // const dat = await axios.get(
@@ -107,7 +107,7 @@ app.get("/pokemon/:id", async (req, res) => {
 });
 
 app.put("/pokemon/:id", async (req, res) => {
-  let poke = pokemon[req.params.id];
+  // let poke = pokemon[req.params.id];
 
   try {
     // const dat = await axios.get(
@@ -123,7 +123,6 @@ app.put("/pokemon/:id", async (req, res) => {
       res.redirect("/pokemon");
     });
     //console.log(pokemon);
-    // res.render("Change", { pokemon: pok, id: req.params.id });
   } catch (err) {
     console.log(err);
     res.send(err);
@@ -131,7 +130,7 @@ app.put("/pokemon/:id", async (req, res) => {
 });
 
 app.get("/pokemon/:id/edit", async (req, res) => {
-  let poke = pokemon[req.params.id];
+  // let poke = pokemon[req.params.id];
 
   try {
     // const dat = await axios.get(
